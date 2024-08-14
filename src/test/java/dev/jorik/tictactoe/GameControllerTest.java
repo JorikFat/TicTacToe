@@ -1,6 +1,10 @@
 package dev.jorik.tictactoe;
 
+import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.game.GameController;
+import dev.jorik.tictactoe.field.models.FieldState;
+import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.game.models.Result;
 import dev.jorik.tictactoe.game.models.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,20 +18,20 @@ public class GameControllerTest {
     @Test
     public void createEmpty(){
         GameController controller = new GameController();
-        assertEquals(Player.CROSS, controller.getPlayer());
-        assertFalse(controller.isGameOver());
+        assertEquals(Player.CROSS, controller.getCurrentPlayer());
+        assertFalse(controller.isOver());
         assertNull(controller.getResult());
-        assertArrayEquals(controller.getField().getCells(), new Player[3][3]);
+        assertEquals("   \n   \n   \n", controller.getField().fieldLine);
     }
 
     @Test
     public void filledCreate(){
-        Model model = new Model(Result.DRAW, Player.CIRCLE, new Field());
-        GameController controller = new GameController(model);
-        assertEquals(Player.CIRCLE, controller.getPlayer());
-        assertTrue(controller.isGameOver());
+        Game model = new Game(Result.DRAW, Player.CIRCLE);
+        GameController controller = new GameController(model, new FieldState());
+        assertEquals(Player.CIRCLE, controller.getCurrentPlayer());
+        assertTrue(controller.isOver());
         assertEquals(Result.DRAW, controller.getResult());
-        assertArrayEquals(controller.getField().getCells(), new Player[3][3]);
+        assertEquals("   \n   \n   \n", controller.getField().fieldLine);
     }
 
     //todo: catch IllegalArgumtnException
@@ -52,7 +56,7 @@ public class GameControllerTest {
     @Test
     public void gameOver() throws  OccupiedException {
         GameController controller = new GameController();
-        assertFalse(controller.isGameOver());
+        assertFalse(controller.isOver());
         controller.markCell("11");
         controller.markCell("12");
         controller.markCell("13");
@@ -62,18 +66,18 @@ public class GameControllerTest {
         controller.markCell("31");
         controller.markCell("32");
         controller.markCell("33");
-        assertTrue(controller.isGameOver());
+        assertTrue(controller.isOver());
     }
 
     @Test
     public void swapPlayers() throws  OccupiedException {
         GameController controller = new GameController();
-        assertEquals(Player.CROSS, controller.getPlayer());
+        assertEquals(Player.CROSS, controller.getCurrentPlayer());
         controller.markCell("11");
-        assertEquals(Player.CIRCLE, controller.getPlayer());
+        assertEquals(Player.CIRCLE, controller.getCurrentPlayer());
         controller.markCell("12");
-        assertEquals(Player.CROSS, controller.getPlayer());
+        assertEquals(Player.CROSS, controller.getCurrentPlayer());
         controller.markCell("13");
-        assertEquals(Player.CIRCLE, controller.getPlayer());
+        assertEquals(Player.CIRCLE, controller.getCurrentPlayer());
     }
 }

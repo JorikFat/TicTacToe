@@ -1,50 +1,59 @@
 package dev.jorik.tictactoe.game;
 
+import dev.jorik.tictactoe.field.*;
+import dev.jorik.tictactoe.field.models.FieldDto;
+import dev.jorik.tictactoe.field.models.FieldState;
+import dev.jorik.tictactoe.field.models.OccupiedException;
+import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.models.*;
 
 public class GameController {
-    private final Model model;
+    private final FieldController fieldController;
+    private final Game state;
 
-    public GameController(){
-        this.model = new Model();
+    public GameController() {
+        this.state = new Game();
+        this.fieldController = new FieldController();
     }
 
-    public GameController(Model model){
-        this.model = model;
+    public GameController(Game game, FieldState fieldState) {
+        this.state = game;
+        this.fieldController = new FieldController(fieldState);
     }
 
-    public void markCell(String coords) throws OccupiedException, IllegalArgumentException{
+    public void markCell(String coords) throws OccupiedException, IllegalArgumentException {
         validateInput(coords);
         int y = Character.getNumericValue(coords.charAt(0)) - 1;
         int x = Character.getNumericValue(coords.charAt(1)) - 1;
-        checkRange(x, y);
-        checkCell(x, y);
-        model.setCell(x, y, model.getPlayer());
-        if (hasEmptyCells(model.getField())){
-            swapPlayers();
+        checkRange(x, y);//todo: get size of field
+        fieldController.markCell(x, y, state.player);
+        if (fieldController.isFull()) {
+            state.result = Result.DRAW;
         } else {
-            model.setResult(Result.DRAW);
+            swapPlayers();
         }
     }
 
-    public Field getField(){
-        return model.getField();
+    public FieldDto getField(){
+        return fieldController.getField();
     }
 
-    public Player getPlayer(){
-        return model.getPlayer();
+    public Player getCurrentPlayer(){
+        return state.player;
     }
 
-    public boolean isGameOver(){
-        return model.getResult() != null;
+    public boolean isOver(){
+        return state.result != null;
     }
 
     public Result getResult(){
-        return model.getResult();
+        return state.result;
     }
 
-    private void swapPlayers(){
-        model.setPlayer(model.getPlayer() == Player.CROSS ? Player.CIRCLE : Player.CROSS);
+    private void swapPlayers() {
+        state.player = state.player == Player.CROSS
+                ? Player.CIRCLE
+                : Player.CROSS;
     }
 
     private void validateInput(String input) throws IllegalArgumentException {
@@ -52,21 +61,7 @@ public class GameController {
         Character.getNumericValue(input.charAt(1));
     }
 
-    private void checkCell(int x, int y) throws OccupiedException {
-        Player player = model.getCell(x, y);
-        if(player != null) throw new OccupiedException(x, y, player);
-    }
-
-    private void checkRange(int x, int y){
-        if(x < 0 || 2 < x || y < 0 || 2 < y) throw new IndexOutOfBoundsException();
-    }
-
-    private boolean hasEmptyCells(Field field){
-        for(Player[] row : field.getCells()){
-            for(Player cell :row){
-                if(cell == null) return true;
-            }
-        }
-        return false;
+    private void checkRange(int x, int y) {
+        if (x < 0 || 2 < x || y < 0 || 2 < y) throw new IndexOutOfBoundsException();
     }
 }

@@ -1,4 +1,4 @@
-package dev.jorik.tictactoe.game.models;
+package dev.jorik.tictactoe.field.models;
 
 public class OccupiedException extends Exception {
     public final int x;

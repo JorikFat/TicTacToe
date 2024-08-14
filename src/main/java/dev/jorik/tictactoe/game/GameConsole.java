@@ -1,8 +1,7 @@
 package dev.jorik.tictactoe.game;
 
-import dev.jorik.tictactoe.game.models.Field;
-import dev.jorik.tictactoe.game.models.OccupiedException;
-import dev.jorik.tictactoe.game.models.Player;
+import dev.jorik.tictactoe.field.models.OccupiedException;
+import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.models.Result;
 
 import java.io.PrintStream;
@@ -20,11 +19,11 @@ public class GameConsole {
     }
 
     public void start(){
-        while (!controller.isGameOver()){
-            print.printf("(%s) введите координаты ячейки: ", format(controller.getPlayer()));
+        while (!controller.isOver()){
+            print.printf("(%s) введите координаты ячейки: ", format(controller.getCurrentPlayer()));
             try {
                 controller.markCell(scanner.nextLine());
-                print.print(format(controller.getField()));
+                print.print(controller.getField().fieldLine);
             } catch (OccupiedException occupied){
                 print.println("ячейка занята");
             } catch (IndexOutOfBoundsException | IllegalArgumentException runException){
@@ -49,25 +48,5 @@ public class GameConsole {
             case DRAW: return "Ничья";
         }
         throw new NullPointerException();
-    }
-
-    private String format(Field field){
-        StringBuilder builder = new StringBuilder();
-        for (Player[] row : field.getCells()){
-            for(Player cell : row){
-                builder.append(symbol(cell));
-            }
-            builder.append('\n');
-        }
-        return builder.toString();
-    }
-
-    private char symbol(Player player){
-        if(player == null) return ' ';
-        switch (player){
-            case CROSS: return 'X';
-            case CIRCLE: return 'O';
-            default: throw new IllegalStateException();
-        }
     }
 }
