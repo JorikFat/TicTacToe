@@ -1,5 +1,6 @@
 package dev.jorik.tictactoe;
 
+import dev.jorik.tictactoe.field.FieldController;
 import dev.jorik.tictactoe.game.GameConsole;
 import dev.jorik.tictactoe.game.GameController;
 
@@ -9,8 +10,7 @@ public interface EntryPoint {
     static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         GameController controller = new GameController();
-        GameConsole console = new GameConsole(System.out, scanner, controller);
-        console.start();
-//        System.out.println("TicTacToe");
+        GameConsole console = new GameConsole(System.out);
+        new Mediator(controller, new FieldController(), console, scanner).start();
     }
 }
