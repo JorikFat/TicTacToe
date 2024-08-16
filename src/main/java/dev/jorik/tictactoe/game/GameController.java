@@ -30,7 +30,12 @@ public class GameController {
         if (fieldController.isFull()) {
             state.result = Result.DRAW;
         } else {
-            swapPlayers();
+            Player winner = fieldController.getWinner();
+            if(winner != null){
+                state.result = winner == Player.CROSS ? Result.CROSS : Result.CIRCLE;
+            } else {
+                swapPlayers();
+            }
         }
     }
 
