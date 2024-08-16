@@ -1,8 +1,8 @@
 package dev.jorik.tictactoe;
 
+import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.field.FieldController;
 import dev.jorik.tictactoe.field.models.OccupiedException;
-import dev.jorik.tictactoe.game.GameConsole;
 import dev.jorik.tictactoe.game.GameController;
 
 import java.util.Scanner;
@@ -10,10 +10,15 @@ import java.util.Scanner;
 public class Mediator {
     private final GameController game;
     private final FieldController field;
-    private final GameConsole console;
+    private final ConsolePresenter console;
     private final Scanner scanner;
 
-    public Mediator(GameController game, FieldController field, GameConsole console, Scanner scanner) {
+    public Mediator(
+            GameController game,
+            FieldController field,
+            ConsolePresenter console,
+            Scanner scanner
+    ) {
         this.game = game;
         this.field = field;
         this.console = console;
@@ -22,18 +27,18 @@ public class Mediator {
 
     public void start(){
         do {
-            console.printTurn(game.getCurrentPlayer());
+            console.show(game.getCurrentPlayer());
             try {
                 final String input = scanner.nextLine();
                 game.markCell(input);
-                console.printField(game.getField());
+                console.show(game.getField());
             } catch (OccupiedException e) {
-                console.printMessage("ячейка занята");
+                console.show("ячейка занята");
             } catch (IndexOutOfBoundsException | IllegalArgumentException runException){
-                console.printMessage("координаты не распознаны");
+                console.show("координаты не распознаны");
             }
 
         } while (!game.isOver());
-        console.printResult(game.getResult());
+        console.show(game.getResult());
     }
 }
