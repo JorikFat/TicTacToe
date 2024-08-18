@@ -3,7 +3,7 @@ package dev.jorik.tictactoe;
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.ConsoleView;
 import dev.jorik.tictactoe.models.field.FieldDto;
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 import dev.jorik.tictactoe.game.models.Result;
 import org.junit.After;
 import org.junit.Before;

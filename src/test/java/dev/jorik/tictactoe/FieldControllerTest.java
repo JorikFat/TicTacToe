@@ -4,7 +4,7 @@ import dev.jorik.tictactoe.field.FieldController;
 import dev.jorik.tictactoe.models.field.Field;
 import dev.jorik.tictactoe.models.field.FieldDto;
 import dev.jorik.tictactoe.models.field.OccupiedCellException;
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 import dev.jorik.tictactoe.models.field.OutOfFieldException;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,7 +3,7 @@ package dev.jorik.tictactoe;
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.input.ConsoleInput;
 import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 import dev.jorik.tictactoe.game.GameController;
 import dev.jorik.tictactoe.models.coords.Coords;
 

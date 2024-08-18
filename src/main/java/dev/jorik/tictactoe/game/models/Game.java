@@ -1,6 +1,6 @@
 package dev.jorik.tictactoe.game.models;
 
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 
 public class Game {
     public Result result;

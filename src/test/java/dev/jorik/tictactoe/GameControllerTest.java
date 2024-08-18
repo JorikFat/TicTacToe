@@ -1,6 +1,6 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 import dev.jorik.tictactoe.game.GameController;
 import dev.jorik.tictactoe.game.models.Game;
 import dev.jorik.tictactoe.game.models.Result;

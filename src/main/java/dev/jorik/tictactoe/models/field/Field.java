@@ -1,6 +1,6 @@
 package dev.jorik.tictactoe.models.field;
 
-import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.player.Player;
 
 public class Field {
     public final Player[][] cells;
