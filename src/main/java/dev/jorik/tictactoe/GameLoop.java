@@ -3,11 +3,9 @@ package dev.jorik.tictactoe;
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.input.ConsoleInput;
 import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.GameController;
 import dev.jorik.tictactoe.models.coords.Coords;
-import dev.jorik.tictactoe.models.coords.LineException;
 
 public class GameLoop {
     private final GameController game;
@@ -33,19 +31,16 @@ public class GameLoop {
             try {
                 Coords coords = input.listen();
                 field.markCell(coords.x, coords.y, game.getCurrentPlayer());
-                if(checkOver()) break;
+                if (checkOver()) break;
                 console.show(field.getField());
                 game.changeTurn();
-            } catch (OccupiedException e) {
-                console.show("ячейка занята");//todo: move to presenter
-            } catch (IndexOutOfBoundsException | IllegalArgumentException runException){
-                console.show("координаты не распознаны"); //todo: move to presenter
-            } catch (LineException e){
+            } catch (Exception e) {
                 console.show(e);
             }
-
         } while (!game.isOver());
         console.show(game.getResult());
+        //todo: print last field state
+        //todo: make last step automatically
     }
 
     private boolean checkOver(){

@@ -1,4 +1,6 @@
-package dev.jorik.tictactoe.field.models;
+package dev.jorik.tictactoe.models.field;
+
+import dev.jorik.tictactoe.field.models.Player;
 
 public class FieldDto {
     //top row

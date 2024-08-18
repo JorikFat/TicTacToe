@@ -1,9 +1,11 @@
 package dev.jorik.tictactoe.console;
 
-import dev.jorik.tictactoe.field.models.FieldDto;
+import dev.jorik.tictactoe.models.field.FieldDto;
 import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.models.Result;
 import dev.jorik.tictactoe.models.coords.LineException;
+import dev.jorik.tictactoe.models.field.OccupiedCellException;
+import dev.jorik.tictactoe.models.field.OutOfFieldException;
 
 public class ConsolePresenter {
     private final ConsoleView console;
@@ -38,8 +40,16 @@ public class ConsolePresenter {
         console.show(message + "\n");
     }
 
-    public void show(LineException exception){
-        console.showLine("Ввод не распознан");
+    public void show(Exception exception){
+        String message;
+        if(exception instanceof OccupiedCellException){
+            message = "Ячейка занята";
+        } else if (exception instanceof OutOfFieldException || exception instanceof LineException){
+            message = "Ввод не распознан";
+        } else {
+            message = "Неизвестная ошибка";
+        }
+        console.showLine(message);
     }
 
     private char symbol(Player player){

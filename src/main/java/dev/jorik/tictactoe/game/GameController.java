@@ -50,8 +50,4 @@ public class GameController {
     public Result getResult(){
         return state.result;
     }
-
-    private void checkRange(int x, int y) {
-        if (x < 0 || 2 < x || y < 0 || 2 < y) throw new IndexOutOfBoundsException();
-    }
 }

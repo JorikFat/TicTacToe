@@ -1,9 +1,6 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.field.models.FieldDto;
-import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.console.Console;
-import dev.jorik.tictactoe.game.models.Result;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

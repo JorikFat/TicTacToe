@@ -1,10 +1,11 @@
 package dev.jorik.tictactoe;
 
 import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.field.models.Field;
-import dev.jorik.tictactoe.field.models.FieldDto;
-import dev.jorik.tictactoe.field.models.OccupiedException;
+import dev.jorik.tictactoe.models.field.Field;
+import dev.jorik.tictactoe.models.field.FieldDto;
+import dev.jorik.tictactoe.models.field.OccupiedCellException;
 import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.field.OutOfFieldException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -45,7 +46,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void markCells() throws OccupiedException {
+    public void markCells() throws OccupiedCellException, OutOfFieldException {
         Field field = new Field();
         FieldController controller = new FieldController(field);
 
@@ -57,15 +58,15 @@ public class FieldControllerTest {
         //todo: fill full
     }
 
-    @Test(expected = OccupiedException.class)
-    public void occupiedInput() throws OccupiedException {
+    @Test(expected = OccupiedCellException.class)
+    public void occupiedInput() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(1, 1, Player.CROSS);
         controller.markCell(1, 1, Player.CIRCLE);
     }
 
     @Test
-    public void isFull() throws OccupiedException {
+    public void isFull() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         assertFalse(controller.isFull());
         controller.markCell(0, 0, Player.CROSS);
@@ -83,7 +84,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void noWinner() throws OccupiedException {
+    public void noWinner() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
 
         controller.markCell(0, 0, Player.CROSS);
@@ -92,7 +93,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winRow1() throws OccupiedException {
+    public void winRow1() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(0,0, Player.CROSS);
         controller.markCell(1,0, Player.CROSS);
@@ -101,7 +102,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winRow2() throws OccupiedException {
+    public void winRow2() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(0,1, Player.CROSS);
         controller.markCell(1,1, Player.CROSS);
@@ -110,7 +111,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winRow3() throws OccupiedException {
+    public void winRow3() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(0,2, Player.CROSS);
         controller.markCell(1,2, Player.CROSS);
@@ -119,7 +120,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winCol1() throws OccupiedException {
+    public void winCol1() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(0,0, Player.CROSS);
         controller.markCell(0,1, Player.CROSS);
@@ -128,7 +129,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winCol2() throws OccupiedException {
+    public void winCol2() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(1,0, Player.CROSS);
         controller.markCell(1,1, Player.CROSS);
@@ -137,7 +138,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winCol3() throws OccupiedException {
+    public void winCol3() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(2,0, Player.CROSS);
         controller.markCell(2,1, Player.CROSS);
@@ -146,7 +147,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winDiag1() throws OccupiedException {
+    public void winDiag1() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(0,0, Player.CROSS);
         controller.markCell(1,1, Player.CROSS);
@@ -155,7 +156,7 @@ public class FieldControllerTest {
     }
 
     @Test
-    public void winDiag2() throws OccupiedException {
+    public void winDiag2() throws OccupiedCellException, OutOfFieldException {
         FieldController controller = new FieldController();
         controller.markCell(2,0, Player.CROSS);
         controller.markCell(1,1, Player.CROSS);

@@ -1,9 +1,10 @@
 package dev.jorik.tictactoe.field;
 
-import dev.jorik.tictactoe.field.models.FieldDto;
-import dev.jorik.tictactoe.field.models.Field;
-import dev.jorik.tictactoe.field.models.OccupiedException;
+import dev.jorik.tictactoe.models.field.FieldDto;
+import dev.jorik.tictactoe.models.field.Field;
+import dev.jorik.tictactoe.models.field.OccupiedCellException;
 import dev.jorik.tictactoe.field.models.Player;
+import dev.jorik.tictactoe.models.field.OutOfFieldException;
 
 public class FieldController {
     private final Field state;
@@ -17,7 +18,7 @@ public class FieldController {
     }
 
     //todo: get size of field
-    public void markCell(int x, int y, Player player) throws OccupiedException {
+    public void markCell(int x, int y, Player player) throws OccupiedCellException, OutOfFieldException {
         checkCell(x, y);
         state.cells[x][y] = player;
     }
@@ -58,10 +59,10 @@ public class FieldController {
 
     //-------------private
 
-    private void checkCell(int x, int y) throws OccupiedException {
-        //todo: throw out of field exception
+    private void checkCell(int x, int y) throws OccupiedCellException, OutOfFieldException {
+        if (x < 0 || 2 < x || y < 0 || 2 < y) throw new OutOfFieldException(x, y);
         Player player = state.cells[x][y];
-        if(player != null) throw new OccupiedException(x, y, player);
+        if(player != null) throw new OccupiedCellException(x, y, player);
     }
 
     private Player checkWin(Player[] cells){
