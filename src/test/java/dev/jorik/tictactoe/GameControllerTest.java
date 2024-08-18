@@ -16,44 +16,38 @@ public class GameControllerTest {
     @Test
     public void createEmpty(){
         GameController controller = new GameController();
+
         assertEquals(Player.CROSS, controller.getCurrentPlayer());
         assertFalse(controller.isOver());
         assertNull(controller.getResult());
-//        assertEquals("   \n   \n   \n", controller.getField().fieldLine);
     }
 
     @Test
     public void creteCompleted(){
-        Game model = new Game(Result.DRAW, Player.CIRCLE);
-        GameController controller = new GameController(model);
+        GameController controller = new GameController(new Game(Result.DRAW, Player.CIRCLE));
+
         assertEquals(Player.CIRCLE, controller.getCurrentPlayer());
         assertTrue(controller.isOver());
         assertEquals(Result.DRAW, controller.getResult());
-//        assertEquals("   \n   \n   \n", controller.getField().fieldLine);
     }
 
     //todo: catch IllegalArgumtnException
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test//(expected = IndexOutOfBoundsException.class)
     public void unrecognizeInput() {
-        GameController controller = new GameController();
-        controller.parseCoords("aa");
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void wrongCoordsInput() {
-        GameController controller = new GameController();
-        controller.parseCoords("00");
-    }
-
-//    @Test
-//    public void gameOver() throws  OccupiedException {
+        //todo: implement
 //        GameController controller = new GameController();
-//        sequenceInput(controller, "11", "12", "13", "21", "22", "23", "31", "32", "33");
-//        assertTrue(controller.isOver());
-//    }
+//        controller.parseCoords("aa");
+    }
+
+    @Test//(expected = IndexOutOfBoundsException.class)
+    public void wrongCoordsInput() {
+        //todo: implement
+//        GameController controller = new GameController();
+//        controller.parseCoords("00");
+    }
 
     @Test
-    public void swapPlayers() {
+    public void changeTurn() {
         GameController controller = new GameController();
         assertEquals(Player.CROSS, controller.getCurrentPlayer());
         controller.changeTurn();

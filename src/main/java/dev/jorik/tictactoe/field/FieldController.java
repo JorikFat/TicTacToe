@@ -16,6 +16,7 @@ public class FieldController {
         this.state = state;
     }
 
+    //todo: get size of field
     public void markCell(int x, int y, Player player) throws OccupiedException {
         checkCell(x, y);
         state.cells[x][y] = player;
@@ -58,6 +59,7 @@ public class FieldController {
     //-------------private
 
     private void checkCell(int x, int y) throws OccupiedException {
+        //todo: throw out of field exception
         Player player = state.cells[x][y];
         if(player != null) throw new OccupiedException(x, y, player);
     }

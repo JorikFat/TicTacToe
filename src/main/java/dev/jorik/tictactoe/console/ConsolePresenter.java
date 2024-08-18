@@ -3,6 +3,7 @@ package dev.jorik.tictactoe.console;
 import dev.jorik.tictactoe.field.models.FieldDto;
 import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.models.Result;
+import dev.jorik.tictactoe.models.coords.LineException;
 
 public class ConsolePresenter {
     private final ConsoleView console;
@@ -35,6 +36,10 @@ public class ConsolePresenter {
 
     public void show(String message){
         console.show(message + "\n");
+    }
+
+    public void show(LineException exception){
+        console.showLine("Ввод не распознан");
     }
 
     private char symbol(Player player){

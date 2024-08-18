@@ -1,46 +1,47 @@
 package dev.jorik.tictactoe;
 
 import dev.jorik.tictactoe.console.ConsolePresenter;
+import dev.jorik.tictactoe.console.input.ConsoleInput;
 import dev.jorik.tictactoe.field.FieldController;
 import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.field.models.Player;
 import dev.jorik.tictactoe.game.GameController;
-import dev.jorik.tictactoe.game.models.Coords;
-
-import java.util.Scanner;
+import dev.jorik.tictactoe.models.coords.Coords;
+import dev.jorik.tictactoe.models.coords.LineException;
 
 public class GameLoop {
     private final GameController game;
     private final FieldController field;
     private final ConsolePresenter console;
-    private final Scanner scanner;
+    private final ConsoleInput input;
 
     public GameLoop(
             GameController game,
             FieldController field,
             ConsolePresenter console,
-            Scanner scanner
+            ConsoleInput input
     ) {
         this.game = game;
         this.field = field;
         this.console = console;
-        this.scanner = scanner;
+        this.input = input;
     }
 
     public void start(){
         do {
             console.show(game.getCurrentPlayer());
-            final String input = scanner.nextLine();
             try {
-                Coords coords = game.parseCoords(input);
+                Coords coords = input.listen();
                 field.markCell(coords.x, coords.y, game.getCurrentPlayer());
                 if(checkOver()) break;
                 console.show(field.getField());
                 game.changeTurn();
             } catch (OccupiedException e) {
-                console.show("ячейка занята");
+                console.show("ячейка занята");//todo: move to presenter
             } catch (IndexOutOfBoundsException | IllegalArgumentException runException){
-                console.show("координаты не распознаны");
+                console.show("координаты не распознаны"); //todo: move to presenter
+            } catch (LineException e){
+                console.show(e);
             }
 
         } while (!game.isOver());
