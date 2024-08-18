@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public interface EntryPoint {
     static void main(String[] args){
-        new Mediator(
+        new GameLoop(
                 new GameController(),
                 new FieldController(),
                 new ConsolePresenter(new Console(System.out)),

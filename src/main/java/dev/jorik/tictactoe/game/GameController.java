@@ -1,46 +1,68 @@
 package dev.jorik.tictactoe.game;
 
-import dev.jorik.tictactoe.field.*;
-import dev.jorik.tictactoe.field.models.FieldDto;
-import dev.jorik.tictactoe.field.models.FieldState;
-import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.field.models.Player;
-import dev.jorik.tictactoe.game.models.*;
+import dev.jorik.tictactoe.game.models.Coords;
+import dev.jorik.tictactoe.game.models.Game;
+import dev.jorik.tictactoe.game.models.Result;
+
+import static dev.jorik.tictactoe.field.models.Player.CIRCLE;
 
 public class GameController {
-    private final FieldController fieldController;
     private final Game state;
 
     public GameController() {
         this.state = new Game();
-        this.fieldController = new FieldController();
     }
 
-    public GameController(Game game, FieldState fieldState) {
+    public GameController(Game game) {
         this.state = game;
-        this.fieldController = new FieldController(fieldState);
     }
 
-    public void markCell(String coords) throws OccupiedException, IllegalArgumentException {
-        validateInput(coords);
+    public Coords parseCoords(String coords) throws IllegalArgumentException {
+        validateNumbers(coords);
         int y = Character.getNumericValue(coords.charAt(0)) - 1;
         int x = Character.getNumericValue(coords.charAt(1)) - 1;
         checkRange(x, y);//todo: get size of field
-        fieldController.markCell(x, y, state.player);
-        if (fieldController.isFull()) {
-            state.result = Result.DRAW;
-        } else {
-            Player winner = fieldController.getWinner();
-            if(winner != null){
-                state.result = winner == Player.CROSS ? Result.CROSS : Result.CIRCLE;
-            } else {
-                swapPlayers();
-            }
-        }
+        return new Coords(x, y);
     }
 
-    public FieldDto getField(){
-        return fieldController.getField();
+//    public void validateInput(String coords) throws OccupiedException, IllegalArgumentException {
+//        int y = Character.getNumericValue(coords.charAt(0)) - 1;
+//        int x = Character.getNumericValue(coords.charAt(1)) - 1;
+//        checkRange(x, y);//todo: get size of field
+////        fieldController.markCell(x, y, state.player);
+////        if (fieldController.isFull()) {
+////            state.result = Result.DRAW;
+////        } else {
+////            Player winner = fieldController.getWinner();
+////            if(winner != null){
+////                state.result = winner == Player.CROSS ? Result.CROSS : Result.CIRCLE;
+////            } else {
+////                swapPlayers();
+////            }
+////        }
+//    }
+
+    public void changeTurn(){
+        state.player = state.player == Player.CROSS
+                ? CIRCLE
+                : Player.CROSS;
+    }
+
+    public void setFull(){
+        state.result = Result.DRAW;
+    }
+
+    public void setWinner(Player player){
+        if(player == null) return;
+        switch (player){
+            case CROSS:
+                state.result = Result.CROSS;
+                break;
+            case CIRCLE:
+                state.result = Result.CIRCLE;
+                break;
+        }
     }
 
     public Player getCurrentPlayer(){
@@ -55,13 +77,7 @@ public class GameController {
         return state.result;
     }
 
-    private void swapPlayers() {
-        state.player = state.player == Player.CROSS
-                ? Player.CIRCLE
-                : Player.CROSS;
-    }
-
-    private void validateInput(String input) throws IllegalArgumentException {
+    private void validateNumbers(String input) throws IllegalArgumentException {
         Character.getNumericValue(input.charAt(0));
         Character.getNumericValue(input.charAt(1));
     }

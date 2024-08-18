@@ -69,6 +69,7 @@ public class FieldController {
         if(player != null) throw new OccupiedException(x, y, player);
     }
 
+    //todo: move to presenter
     private char symbol(Player player){
         if(player == null) return ' ';
         switch (player){

@@ -10,4 +10,8 @@ public class FieldState {
                 new Player[3]
         };
     }
+
+    public FieldState(Player[][] cells){
+        this.cells = cells;
+    }
 }
