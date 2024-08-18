@@ -55,27 +55,35 @@ public class ConsolePresenterTest {
     public void showFieldEmpty(){
         ConsolePresenter presenter = new ConsolePresenter(mockView);
 
-        presenter.show(new FieldDto("   \n   \n   \n"));
+        presenter.show(new FieldDto(new Player[3][3]));
 
-        Mockito.verify(mockView).show("   \n   \n   \n");
+        Mockito.verify(mockView).showLine("   \n   \n   ");
     }
 
     @Test
     public void showFieldCross(){
         ConsolePresenter presenter = new ConsolePresenter(mockView);
 
-        presenter.show(new FieldDto("XXX\nXXX\nXXX\n"));
+        presenter.show(new FieldDto(new Player[][]{
+                new Player[]{ Player.CROSS, Player.CROSS, Player.CROSS },
+                new Player[]{ Player.CROSS, Player.CROSS, Player.CROSS },
+                new Player[]{ Player.CROSS, Player.CROSS, Player.CROSS },
+        }));
 
-        Mockito.verify(mockView).show("XXX\nXXX\nXXX\n");
+        Mockito.verify(mockView).showLine("XXX\nXXX\nXXX");
     }
 
     @Test
     public void showFieldCircle(){
         ConsolePresenter presenter = new ConsolePresenter(mockView);
 
-        presenter.show(new FieldDto("OOO\nOOO\nOOO\n"));
+        presenter.show(new FieldDto(new Player[][]{
+                new Player[]{ Player.CIRCLE, Player.CIRCLE, Player.CIRCLE },
+                new Player[]{ Player.CIRCLE, Player.CIRCLE, Player.CIRCLE },
+                new Player[]{ Player.CIRCLE, Player.CIRCLE, Player.CIRCLE },
+        }));
 
-        Mockito.verify(mockView).show("OOO\nOOO\nOOO\n");
+        Mockito.verify(mockView).showLine("OOO\nOOO\nOOO");
     }
 
     @Test

@@ -1,9 +1,9 @@
 package dev.jorik.tictactoe.field.models;
 
-public class FieldState {
+public class Field {
     public final Player[][] cells;
 
-    public FieldState(){
+    public Field(){
         this.cells = new Player[][]{
                 new Player[3],
                 new Player[3],
@@ -11,7 +11,7 @@ public class FieldState {
         };
     }
 
-    public FieldState(Player[][] cells){
+    public Field(Player[][] cells){
         this.cells = cells;
     }
 }

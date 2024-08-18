@@ -1,18 +1,18 @@
 package dev.jorik.tictactoe.field;
 
 import dev.jorik.tictactoe.field.models.FieldDto;
-import dev.jorik.tictactoe.field.models.FieldState;
+import dev.jorik.tictactoe.field.models.Field;
 import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.field.models.Player;
 
 public class FieldController {
-    private final FieldState state;
+    private final Field state;
 
     public FieldController(){
-        this.state = new FieldState();
+        this.state = new Field();
     }
 
-    public FieldController(FieldState state){
+    public FieldController(Field state){
         this.state = state;
     }
 
@@ -52,14 +52,7 @@ public class FieldController {
     }
 
     public FieldDto getField(){
-        StringBuilder builder = new StringBuilder();
-        for (Player[] row : state.cells){
-            for(Player cell : row){
-                builder.append(symbol(cell));
-            }
-            builder.append('\n');
-        }
-        return new FieldDto(builder.toString());
+        return new FieldDto(state.cells);
     }
 
     //-------------private
@@ -67,16 +60,6 @@ public class FieldController {
     private void checkCell(int x, int y) throws OccupiedException {
         Player player = state.cells[x][y];
         if(player != null) throw new OccupiedException(x, y, player);
-    }
-
-    //todo: move to presenter
-    private char symbol(Player player){
-        if(player == null) return ' ';
-        switch (player){
-            case CROSS: return 'X';
-            case CIRCLE: return 'O';
-            default: throw new IllegalStateException();
-        }
     }
 
     private Player checkWin(Player[] cells){

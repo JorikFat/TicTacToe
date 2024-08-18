@@ -1,7 +1,8 @@
 package dev.jorik.tictactoe;
 
 import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.field.models.FieldState;
+import dev.jorik.tictactoe.field.models.Field;
+import dev.jorik.tictactoe.field.models.FieldDto;
 import dev.jorik.tictactoe.field.models.OccupiedException;
 import dev.jorik.tictactoe.field.models.Player;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class FieldControllerTest {
     @Test
     public void createEmpty() {
         FieldController controller = new FieldController();
-        assertEquals("   \n   \n   \n", controller.getField().fieldLine);
+        assertEqualsFields(new Player[3][3], controller.getField());
     }
 
     //todo: implement
@@ -45,7 +46,7 @@ public class FieldControllerTest {
 
     @Test
     public void markCells() throws OccupiedException {
-        FieldState field = new FieldState();
+        Field field = new Field();
         FieldController controller = new FieldController(field);
 
         controller.markCell(0, 0, Player.CROSS);
@@ -160,5 +161,17 @@ public class FieldControllerTest {
         controller.markCell(1,1, Player.CROSS);
         controller.markCell(0,2, Player.CROSS);
         assertEquals(Player.CROSS, controller.getWinner());
+    }
+
+    private void assertEqualsFields(Player[][] expected, FieldDto actual){
+        assertEquals("top left", expected[0][0], actual.tl);
+        assertEquals("top center", expected[1][0], actual.tc);
+        assertEquals("top right", expected[2][0], actual.tr);
+        assertEquals("left center", expected[0][1], actual.cl);
+        assertEquals("center center", expected[1][1], actual.cc);
+        assertEquals("center right", expected[2][1], actual.cr);
+        assertEquals("bottom left", expected[0][2], actual.bl);
+        assertEquals("bottom center", expected[1][2], actual.bc);
+        assertEquals("bottom right", expected[2][2], actual.br);
     }
 }

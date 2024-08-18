@@ -13,4 +13,9 @@ public class Console implements ConsoleView {
     public void show(String message) {
         print.print(message);
     }
+
+    @Override
+    public void showLine(String message) {
+        print.println(message);
+    }
 }

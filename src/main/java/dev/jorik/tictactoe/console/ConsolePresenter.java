@@ -12,7 +12,11 @@ public class ConsolePresenter {
     }
 
     public void show(FieldDto field){
-        console.show(field.fieldLine);
+        String fieldLine = String.valueOf(symbol(field.tl)) + symbol(field.tc) + symbol(field.tr) + '\n' +
+                symbol(field.cl) + symbol(field.cc) + symbol(field.cr) + '\n' +
+                symbol(field.bl) + symbol(field.bc) + symbol(field.br);
+
+        console.showLine(fieldLine);
     }
 
     public void show(Result result) {
@@ -31,5 +35,14 @@ public class ConsolePresenter {
 
     public void show(String message){
         console.show(message + "\n");
+    }
+
+    private char symbol(Player player){
+        if(player == null) return ' ';
+        switch (player){
+            case CROSS: return 'X';
+            case CIRCLE: return 'O';
+            default: throw new IllegalStateException();
+        }
     }
 }
