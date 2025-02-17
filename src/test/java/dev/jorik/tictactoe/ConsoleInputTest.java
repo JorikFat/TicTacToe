@@ -1,8 +1,8 @@
 package dev.jorik.tictactoe;
 
 import dev.jorik.tictactoe.console.input.ConsoleInput;
-import dev.jorik.tictactoe.models.coords.Coords;
-import dev.jorik.tictactoe.models.coords.LineException;
+import dev.jorik.tictactoe.console.Coords;
+import dev.jorik.tictactoe.console.LineException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

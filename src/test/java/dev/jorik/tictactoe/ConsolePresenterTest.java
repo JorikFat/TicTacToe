@@ -2,9 +2,9 @@ package dev.jorik.tictactoe;
 
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.ConsoleView;
-import dev.jorik.tictactoe.features.field.FieldDto;
-import dev.jorik.tictactoe.features.Player;
-import dev.jorik.tictactoe.features.game.Result;
+import dev.jorik.tictactoe.game.features.field.FieldDto;
+import dev.jorik.tictactoe.game.features.Player;
+import dev.jorik.tictactoe.game.features.game.Result;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

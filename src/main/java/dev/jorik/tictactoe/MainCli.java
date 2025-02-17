@@ -4,10 +4,10 @@ package dev.jorik.tictactoe;
 import dev.jorik.tictactoe.console.Console;
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.input.ConsoleInput;
-import dev.jorik.tictactoe.features.Player;
-import dev.jorik.tictactoe.features.field.FieldController;
-import dev.jorik.tictactoe.features.game.GameController;
-import dev.jorik.tictactoe.models.coords.Coords;
+import dev.jorik.tictactoe.core.Player;
+import dev.jorik.tictactoe.core.field.FieldController;
+import dev.jorik.tictactoe.core.game.GameController;
+import dev.jorik.tictactoe.console.Coords;
 
 import java.util.Scanner;
 
@@ -22,6 +22,7 @@ public interface MainCli {
             console.show(game.getCurrentPlayer());
             try {
                 Coords coords = input.listen();
+                validate(coords);
                 field.markCell(coords.x, coords.y, game.getCurrentPlayer());
                 if (checkOver()) break;
                 console.show(field.getField());
@@ -47,5 +48,11 @@ public interface MainCli {
             return true;
         }
         return false;
+    }
+
+    static void validate(Coords coords) throws OutOfFieldException {
+        final int size = field.getFieldSize() - 1;
+        if(coords.x < 0 || coords.y < 0 || coords.x > size || coords.y > size)
+            throw new OutOfFieldException(coords.x, coords.y);
     }
 }

@@ -13,4 +13,5 @@ repositories {
 dependencies {
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.mockito:mockito-core:2.24.0'
+    implementation project(':core')
 }

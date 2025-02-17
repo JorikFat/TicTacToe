@@ -1,11 +1,10 @@
 package dev.jorik.tictactoe.console;
 
-import dev.jorik.tictactoe.features.field.FieldDto;
-import dev.jorik.tictactoe.features.Player;
-import dev.jorik.tictactoe.features.game.Result;
-import dev.jorik.tictactoe.models.coords.LineException;
-import dev.jorik.tictactoe.models.field.OccupiedCellException;
-import dev.jorik.tictactoe.models.field.OutOfFieldException;
+import dev.jorik.tictactoe.core.field.FieldDto;
+import dev.jorik.tictactoe.core.Player;
+import dev.jorik.tictactoe.core.game.Result;
+import dev.jorik.tictactoe.core.field.OccupiedCellException;
+import dev.jorik.tictactoe.OutOfFieldException;
 
 public class ConsolePresenter {
     private final ConsoleView console;

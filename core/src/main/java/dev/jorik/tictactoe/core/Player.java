@@ -1,3 +1,3 @@
-package dev.jorik.tictactoe.features;
+package dev.jorik.tictactoe.core;
 
 public enum Player { CROSS, CIRCLE }

@@ -1,9 +1,9 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.features.Player;
-import dev.jorik.tictactoe.features.game.GameController;
-import dev.jorik.tictactoe.features.game.Game;
-import dev.jorik.tictactoe.features.game.Result;
+import dev.jorik.tictactoe.game.features.Player;
+import dev.jorik.tictactoe.game.features.game.GameController;
+import dev.jorik.tictactoe.game.features.game.Game;
+import dev.jorik.tictactoe.game.features.game.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

@@ -1,6 +1,6 @@
-package dev.jorik.tictactoe.features.field;
+package dev.jorik.tictactoe.core.field;
 
-import dev.jorik.tictactoe.features.Player;
+import dev.jorik.tictactoe.core.Player;
 
 public class FieldDto {
     //top row
