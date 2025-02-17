@@ -1,13 +1,13 @@
-package dev.jorik.tictactoe;
+package dev.jorik.tictactoe.cli;
 
 
-import dev.jorik.tictactoe.console.Console;
-import dev.jorik.tictactoe.console.ConsolePresenter;
-import dev.jorik.tictactoe.console.input.ConsoleInput;
+import dev.jorik.tictactoe.cli.console.Console;
+import dev.jorik.tictactoe.cli.console.ConsolePresenter;
+import dev.jorik.tictactoe.cli.console.input.ConsoleInput;
 import dev.jorik.tictactoe.core.Player;
 import dev.jorik.tictactoe.core.field.FieldController;
 import dev.jorik.tictactoe.core.game.GameController;
-import dev.jorik.tictactoe.console.Coords;
+import dev.jorik.tictactoe.cli.console.Coords;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package dev.jorik.tictactoe.console;
+package dev.jorik.tictactoe.cli.console;
 
 public class Coords {
     public final int x;

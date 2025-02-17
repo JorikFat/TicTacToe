@@ -1,7 +1,7 @@
-package dev.jorik.tictactoe.console.input;
+package dev.jorik.tictactoe.cli.console.input;
 
-import dev.jorik.tictactoe.console.Coords;
-import dev.jorik.tictactoe.console.LineException;
+import dev.jorik.tictactoe.cli.console.Coords;
+import dev.jorik.tictactoe.cli.console.LineException;
 
 import java.util.Scanner;
 

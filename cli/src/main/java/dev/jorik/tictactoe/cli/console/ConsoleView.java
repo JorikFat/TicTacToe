@@ -1,4 +1,4 @@
-package dev.jorik.tictactoe.console;
+package dev.jorik.tictactoe.cli.console;
 
 public interface ConsoleView {
     void show(String message);

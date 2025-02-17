@@ -1,3 +1,4 @@
 rootProject.name = 'TicTacToe'
 include 'core'
+include 'cli'
 

@@ -1,7 +1,7 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.console.ConsolePresenter;
-import dev.jorik.tictactoe.console.ConsoleView;
+import dev.jorik.tictactoe.cli.console.ConsolePresenter;
+import dev.jorik.tictactoe.cli.console.ConsoleView;
 import dev.jorik.tictactoe.game.features.field.FieldDto;
 import dev.jorik.tictactoe.game.features.Player;
 import dev.jorik.tictactoe.game.features.game.Result;

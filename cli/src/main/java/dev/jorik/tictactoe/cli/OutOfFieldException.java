@@ -1,4 +1,4 @@
-package dev.jorik.tictactoe;
+package dev.jorik.tictactoe.cli;
 
 public class OutOfFieldException extends Exception {
     public final int x;

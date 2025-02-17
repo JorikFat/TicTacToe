@@ -1,6 +1,6 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.console.Console;
+import dev.jorik.tictactoe.cli.console.Console;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
