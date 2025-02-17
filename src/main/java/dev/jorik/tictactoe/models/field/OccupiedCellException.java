@@ -1,6 +1,6 @@
 package dev.jorik.tictactoe.models.field;
 
-import dev.jorik.tictactoe.models.player.Player;
+import dev.jorik.tictactoe.features.Player;
 
 public class OccupiedCellException extends Exception {
     public final int x;

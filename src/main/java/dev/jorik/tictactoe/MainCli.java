@@ -1,31 +1,23 @@
 package dev.jorik.tictactoe;
 
+
+import dev.jorik.tictactoe.console.Console;
 import dev.jorik.tictactoe.console.ConsolePresenter;
 import dev.jorik.tictactoe.console.input.ConsoleInput;
-import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.models.player.Player;
-import dev.jorik.tictactoe.game.GameController;
+import dev.jorik.tictactoe.features.Player;
+import dev.jorik.tictactoe.features.field.FieldController;
+import dev.jorik.tictactoe.features.game.GameController;
 import dev.jorik.tictactoe.models.coords.Coords;
 
-public class GameLoop {
-    private final GameController game;
-    private final FieldController field;
-    private final ConsolePresenter console;
-    private final ConsoleInput input;
+import java.util.Scanner;
 
-    public GameLoop(
-            GameController game,
-            FieldController field,
-            ConsolePresenter console,
-            ConsoleInput input
-    ) {
-        this.game = game;
-        this.field = field;
-        this.console = console;
-        this.input = input;
-    }
+public interface MainCli {
+    GameController game = new GameController();
+    FieldController field = new FieldController();
+    ConsolePresenter console = new ConsolePresenter(new Console(System.out));
+    ConsoleInput input = new ConsoleInput(new Scanner(System.in));
 
-    public void start(){
+    static void main(String[] args) {
         do {
             console.show(game.getCurrentPlayer());
             try {
@@ -43,13 +35,14 @@ public class GameLoop {
         //todo: make last step automatically
     }
 
-    private boolean checkOver(){
+
+    static boolean checkOver() {
         Player winner = field.getWinner();
-        if(winner != null) {
+        if (winner != null) {
             game.setWinner(winner);
             return true;
         }
-        if(field.isFull()) {
+        if (field.isFull()) {
             game.setFull();
             return true;
         }

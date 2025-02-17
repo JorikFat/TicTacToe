@@ -1,3 +1,3 @@
-package dev.jorik.tictactoe.game.models;
+package dev.jorik.tictactoe.features.game;
 
 public enum Result { CROSS, CIRCLE, DRAW }

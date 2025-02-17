@@ -1,8 +1,8 @@
 package dev.jorik.tictactoe.console;
 
-import dev.jorik.tictactoe.models.field.FieldDto;
-import dev.jorik.tictactoe.models.player.Player;
-import dev.jorik.tictactoe.game.models.Result;
+import dev.jorik.tictactoe.features.field.FieldDto;
+import dev.jorik.tictactoe.features.Player;
+import dev.jorik.tictactoe.features.game.Result;
 import dev.jorik.tictactoe.models.coords.LineException;
 import dev.jorik.tictactoe.models.field.OccupiedCellException;
 import dev.jorik.tictactoe.models.field.OutOfFieldException;

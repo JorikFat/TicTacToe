@@ -28,9 +28,9 @@ public class ConsoleInputTest {
     @Test//(expected = LineException.Empty.class)
     public void inputEmpty() throws IOException {
         //todo: implement
-//        InputStream inputStream = new ByteArrayInputStream("".getBytes(StandardCharsets.UTF_8));
-//        ConsoleInput input = new ConsoleInput(new Scanner(inputStream));
-//        assertEquals(new Coords(0, 0), input.listen());
+        InputStream inputStream = new ByteArrayInputStream(new byte[0]);
+        ConsoleInput input = new ConsoleInput(new Scanner(inputStream));
+        assertEquals(new Coords(0, 0), input.listen());
     }
 
     @Test(expected = LineException.TooLarge.class)

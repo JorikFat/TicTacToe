@@ -1,10 +1,8 @@
-package dev.jorik.tictactoe.game;
+package dev.jorik.tictactoe.features.game;
 
-import dev.jorik.tictactoe.models.player.Player;
-import dev.jorik.tictactoe.game.models.Game;
-import dev.jorik.tictactoe.game.models.Result;
+import dev.jorik.tictactoe.features.Player;
 
-import static dev.jorik.tictactoe.models.player.Player.CIRCLE;
+import static dev.jorik.tictactoe.features.Player.CIRCLE;
 
 public class GameController {
     private final Game state;

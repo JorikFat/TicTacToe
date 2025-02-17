@@ -1,9 +1,7 @@
-package dev.jorik.tictactoe.field;
+package dev.jorik.tictactoe.features.field;
 
-import dev.jorik.tictactoe.models.field.FieldDto;
-import dev.jorik.tictactoe.models.field.Field;
 import dev.jorik.tictactoe.models.field.OccupiedCellException;
-import dev.jorik.tictactoe.models.player.Player;
+import dev.jorik.tictactoe.features.Player;
 import dev.jorik.tictactoe.models.field.OutOfFieldException;
 
 public class FieldController {
@@ -32,6 +30,7 @@ public class FieldController {
         return true;
     }
 
+    //todo: refactor to scalable
     public Player getWinner() {
         //rows
         Player[] row1 = new Player[] { state.cells[0][0], state.cells[0][1], state.cells[0][2] };

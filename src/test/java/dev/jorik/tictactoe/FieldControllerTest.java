@@ -1,10 +1,10 @@
 package dev.jorik.tictactoe;
 
-import dev.jorik.tictactoe.field.FieldController;
-import dev.jorik.tictactoe.models.field.Field;
-import dev.jorik.tictactoe.models.field.FieldDto;
+import dev.jorik.tictactoe.features.field.FieldController;
+import dev.jorik.tictactoe.features.field.Field;
+import dev.jorik.tictactoe.features.field.FieldDto;
 import dev.jorik.tictactoe.models.field.OccupiedCellException;
-import dev.jorik.tictactoe.models.player.Player;
+import dev.jorik.tictactoe.features.Player;
 import dev.jorik.tictactoe.models.field.OutOfFieldException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
