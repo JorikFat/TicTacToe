@@ -1,17 +1,21 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
+    }
 }
 
-group 'dev.jorik'
-version '1.0-SNAPSHOT'
-
-repositories {
-    google()
-    mavenCentral()
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
-dependencies {
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'org.mockito:mockito-core:2.24.0'
-    implementation project(':core')
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

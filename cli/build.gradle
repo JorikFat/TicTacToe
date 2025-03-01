@@ -2,12 +2,8 @@ plugins {
     id 'java'
 }
 
-group 'dev.jorik.tictactoe'
+group 'dev.jorik.tictactoe.cli'
 version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'

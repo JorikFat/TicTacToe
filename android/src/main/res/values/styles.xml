@@ -1,0 +1,7 @@
+<resources>
+    <style name="Cell">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+
+</resources>

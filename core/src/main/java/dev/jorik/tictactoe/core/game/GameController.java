@@ -2,8 +2,6 @@ package dev.jorik.tictactoe.core.game;
 
 import dev.jorik.tictactoe.core.Player;
 
-import static dev.jorik.tictactoe.core.Player.CIRCLE;
-
 public class GameController {
     private final Game state;
 
@@ -17,8 +15,12 @@ public class GameController {
 
     public void changeTurn(){
         state.player = state.player == Player.CROSS
-                ? CIRCLE
+                ? Player.CIRCLE
                 : Player.CROSS;
+    }
+
+    public GameDto getState(){
+        return new GameDto(state.result, state.player);
     }
 
     public void setFull(){
@@ -26,7 +28,6 @@ public class GameController {
     }
 
     public void setWinner(Player player){
-        if(player == null) return;
         switch (player){
             case CROSS:
                 state.result = Result.CROSS;

@@ -15,8 +15,8 @@ public class ConsoleInput {
     public Coords listen() throws LineException {
         String line = scanner.nextLine();
         validate(line);
-        int y = Character.getNumericValue(line.charAt(0)) - 1;
-        int x = Character.getNumericValue(line.charAt(1)) - 1;
+        int y = Character.getNumericValue(line.charAt(1)) - 1;
+        int x = Character.getNumericValue(line.charAt(0)) - 1;
         return new Coords(x, y);
     }
 

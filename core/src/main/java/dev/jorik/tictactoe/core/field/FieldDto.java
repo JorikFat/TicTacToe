@@ -27,4 +27,16 @@ public class FieldDto {
         this.bc = matrix[1][2];
         this.br = matrix[2][2];
     }
+
+    public FieldDto() {
+        this.tl = null;
+        this.tc = null;
+        this.tr = null;
+        this.cl = null;
+        this.cc = null;
+        this.cr = null;
+        this.bl = null;
+        this.bc = null;
+        this.br = null;
+    }
 }
