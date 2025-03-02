@@ -1,2 +1,2 @@
-##Crossplatform TicTacToe
-made just for fun
+##Crossplatform TicTacToe  
+Made just for fun
