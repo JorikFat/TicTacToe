@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.jorik.tictactoe.javafx.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="label" />
+    <GridPane prefHeight="150.0" prefWidth="150.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" prefWidth="50.0" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="50.0" />
+            <ColumnConstraints hgrow="NEVER" prefWidth="50.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+        </rowConstraints>
+        <children>
+            <Button id="tl" fx:id="tl" mnemonicParsing="false" onAction="#onTopLeftClick" prefHeight="50.0" prefWidth="50.0" />
+            <Button fx:id="tc" mnemonicParsing="false" onAction="#onTopCenterClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" />
+            <Button fx:id="tr" mnemonicParsing="false" onAction="#onTopRightClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" />
+
+            <Button fx:id="cl" mnemonicParsing="false" onAction="#onCenterLeftClick" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="1" />
+            <Button fx:id="cc" mnemonicParsing="false" onAction="#onCenterCenterClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="cr" mnemonicParsing="false" onAction="#onCenterRightClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+            <Button fx:id="bl" mnemonicParsing="false" onAction="#onBottomLeftClick" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="2" />
+            <Button fx:id="bc" mnemonicParsing="false" onAction="#onBottomCenterClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="br" mnemonicParsing="false" onAction="#onBottomRightClick" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        </children>
+    </GridPane>
+</VBox>
